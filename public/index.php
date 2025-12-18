@@ -7,11 +7,16 @@ session_start();
 const INCLUDES_DIR = __DIR__ . '/../includes';
 const ROUTE_DIR = __DIR__ . '/../routes';
 const TEMPLATES_DIR = __DIR__ . '/../templates';
+const DATABASES_DIR = __DIR__ . '/../databases';
 
 // รวมไฟล์ที่จำเป็น เข้ามาใช้งานใน index.php
 require_once INCLUDES_DIR . '/router.php';
 require_once INCLUDES_DIR . '/view.php';
 require_once INCLUDES_DIR . '/database.php';
+
+// เรียก database ฟังก์ชันเพื่อเชื่อมต่อฐานข้อมูล (ถ้าจำเป็น)
+
+
 
 // ทุกครั้งที่มีการร้องขอเข้ามา ให้เรียกใช้ฟังก์ชัน dispatch
 dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
