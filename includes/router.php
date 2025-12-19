@@ -31,7 +31,7 @@ function notFound()
 }
 
 // ฟังชันสำหรับการหาเส้นทางไฟล์ PHP ที่ตรงกับ URI ที่ร้องขอเข้ามา
-function getFilePath(string $uri, string $method): string
+function getFilePath(string $uri): string
 {
     return ROUTE_DIR . '/' . normalizeUri($uri) . '.php';
 }
@@ -48,7 +48,7 @@ function dispatch(string $uri, string $method): void
     }
 
     // ฟังชันสำหรับการหาเส้นทางไฟล์ PHP ที่ตรงกับ URI ที่ร้องขอเข้ามา
-    $filePath = getFilePath($uri, $method);
+    $filePath = getFilePath($uri);
     if (file_exists($filePath)) {
         include($filePath);
         return;
