@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  php:
+    build: .
+    container_name: mvc-php
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      - mvc-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: mvc-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: enrollment
+      MYSQL_USER: demo
+      MYSQL_PASSWORD: abc123
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - mvc-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: mvc-phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - mysql
+    networks:
+      - mvc-network
+
+volumes:
+  mysql-data:
+
+
+networks:
+  mvc-network:
+    driver: bridge

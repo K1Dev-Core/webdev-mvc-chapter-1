@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 function getConnection(): mysqli
 {
-    $hostname = 'localhost';
+    $hostname = 'mysql';
     $dbName = 'enrollment';
     $username = 'demo';
     $password = 'abc123';
@@ -12,3 +13,7 @@ function getConnection(): mysqli
     }
     return $conn;
 }
+
+// database functions ต่างๆ
+require_once DATABASES_DIR . '/students.php';
+require_once DATABASES_DIR . '/courses.php';
