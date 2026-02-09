@@ -21,3 +21,24 @@ function getStudentsByKeyword(string $keyword): mysqli_result|bool
     $conn->close();
     return $result;
 }
+
+function deleteStudentsById(int $id): bool
+{
+    $conn = getConnection();
+    $sql = 'delete from students where id = ?';
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id);
+    try {
+        $stmt->execute();
+        if ($stmt->affected_rows > 0) {
+            $conn->close();
+            return true;
+        } else {
+            $conn->close();
+            return false;
+        }
+    } catch (Exception $e) {
+        $conn->close();
+        return false;
+    }
+}

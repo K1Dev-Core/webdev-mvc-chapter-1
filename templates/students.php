@@ -19,11 +19,22 @@
                     while ($row = $result->fetch_object()) {
                 ?>
                         <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 hover:shadow-lg transition">
-                            <p class="text-sm text-gray-600 mb-2"><strong>ID:</strong> <?= $row->id ?></p>
-                            <p class="text-lg font-semibold text-gray-800 mb-1"><strong>ชื่อ:</strong> <?= htmlspecialchars($row->first_name) ?></p>
-                            <p class="text-lg font-semibold text-gray-800 mb-1"><strong>นามสกุล:</strong> <?= htmlspecialchars($row->last_name) ?></p>
-                            <p class="text-gray-600 mb-1"><strong>เบอร์โทร:</strong> <?= htmlspecialchars($row->phone_number) ?></p>
-                            <p class="text-gray-600"><strong>อีเมล:</strong> <?= htmlspecialchars($row->email) ?></p>
+                            <div class="flex justify-between items-start">
+                                <div class="flex-grow">
+                                    <p class="text-sm text-gray-600 mb-2"><strong>ID:</strong> <?= $row->id ?></p>
+                                    <p class="text-lg font-semibold text-gray-800 mb-1"><strong>ชื่อ:</strong> <?= htmlspecialchars($row->first_name) ?></p>
+                                    <p class="text-lg font-semibold text-gray-800 mb-1"><strong>นามสกุล:</strong> <?= htmlspecialchars($row->last_name) ?></p>
+                                    <p class="text-gray-600 mb-1"><strong>เบอร์โทร:</strong> <?= htmlspecialchars($row->phone_number) ?></p>
+                                    <p class="text-gray-600"><strong>อีเมล:</strong> <?= htmlspecialchars($row->email) ?></p>
+                                </div>
+                                <div class="ml-4">
+                                    <a href="/students-delete?id=<?= $row->id ?>" 
+                                       onclick="return confirmSubmission()" 
+                                       class="inline-block px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition">
+                                        ลบข้อมูล
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                 <?php
                     }
@@ -37,3 +48,13 @@
     </main>
 
     <?php include 'footer.php' ?>
+    
+    <script>
+        function confirmSubmission() {
+            return confirm("ยืนยันการลบข้อมูล ?");
+        }
+    </script>
+
+</body>
+
+</html>
