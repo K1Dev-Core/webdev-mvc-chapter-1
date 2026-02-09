@@ -27,10 +27,14 @@
                                     <p class="text-gray-600 mb-1"><strong>เบอร์โทร:</strong> <?= htmlspecialchars($row->phone_number) ?></p>
                                     <p class="text-gray-600"><strong>อีเมล:</strong> <?= htmlspecialchars($row->email) ?></p>
                                 </div>
-                                <div class="ml-4">
+                                <div class="ml-4 flex flex-col gap-2">
+                                    <a href="/students-chgpwd?id=<?= $row->id ?>" 
+                                       class="inline-block px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition text-center">
+                                        เปลี่ยนรหัสผ่าน
+                                    </a>
                                     <a href="/students-delete?id=<?= $row->id ?>" 
                                        onclick="return confirmSubmission()" 
-                                       class="inline-block px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition">
+                                       class="inline-block px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition text-center">
                                         ลบข้อมูล
                                     </a>
                                 </div>

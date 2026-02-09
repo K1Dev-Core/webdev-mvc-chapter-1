@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS students (
     date_of_birth DATE,
     email VARCHAR(150) UNIQUE NOT NULL,
     phone_number VARCHAR(20),
+    password VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

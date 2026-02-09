@@ -16,24 +16,19 @@ require_once INCLUDES_DIR . '/database.php';
 
 // เรียก database ฟังก์ชันเพื่อเชื่อมต่อฐานข้อมูล (ถ้าจำเป็น)
 
-
-
-// ทุกครั้งที่มีการร้องขอเข้ามา ให้เรียกใช้ฟังก์ชัน dispatch
-dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
-
 // ควบคุมการเข้าถึงหน้าเว็บด้วย session (ตัวอย่างการใช้งาน)
-// const PUBLIC_ROUTES = ['/', '/login'];
+const PUBLIC_ROUTES = ['/', '/login'];
 
-// if (in_array(strtolower($_SERVER['REQUEST_URI']), PUBLIC_ROUTES)) {
-//     dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
-//     exit;
-// } elseif (isset($_SESSION['timestamp']) && time() - $_SESSION['timestamp'] < 10) {
-//     // 10 Sec.
-//     $unix_timestamp = time();
-//     $_SESSION['timestamp'] = $unix_timestamp;
-//     dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
-// } else {
-//     unset($_SESSION['timestamp']);
-//     header('Location: /');
-//     exit;
-// }
+if (in_array(strtolower($_SERVER['REQUEST_URI']), PUBLIC_ROUTES)) {
+    dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+    exit;
+} elseif (isset($_SESSION['timestamp']) && time() - $_SESSION['timestamp'] < 3600) {
+    // 1 hour session timeout
+    $unix_timestamp = time();
+    $_SESSION['timestamp'] = $unix_timestamp;
+    dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+} else {
+    unset($_SESSION['timestamp']);
+    header('Location: /');
+    exit;
+}
