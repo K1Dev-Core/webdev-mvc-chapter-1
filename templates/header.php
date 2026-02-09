@@ -18,6 +18,7 @@
         <div class="container mx-auto px-6 py-3">
             <a href="/" class="inline-block px-4 py-2 text-emerald-100 hover:text-emerald-200 transition-colors">หน้าแรก</a>
             <a href="/courses" class="inline-block px-4 py-2 text-emerald-300 hover:text-emerald-200 transition-colors">หลักสูตร</a>
+            <a href="/courses-new" class="inline-block px-4 py-2 text-emerald-300 hover:text-emerald-200 transition-colors">เพิ่มคอร์ส</a>
             <a href="/students" class="inline-block px-4 py-2 text-emerald-300 hover:text-emerald-200 transition-colors">ข้อมูลนักเรียน</a>
             <a href="/contact" class="inline-block px-4 py-2 text-emerald-300 hover:text-emerald-200 transition-colors">ติดต่อเรา</a>
         </div>

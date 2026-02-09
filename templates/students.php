@@ -19,7 +19,7 @@
                     while ($row = $result->fetch_object()) {
                 ?>
                         <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 hover:shadow-lg transition">
-                            <p class="text-sm text-gray-600 mb-2"><strong>ID:</strong> <?= $row->student_id ?></p>
+                            <p class="text-sm text-gray-600 mb-2"><strong>ID:</strong> <?= $row->id ?></p>
                             <p class="text-lg font-semibold text-gray-800 mb-1"><strong>ชื่อ:</strong> <?= htmlspecialchars($row->first_name) ?></p>
                             <p class="text-lg font-semibold text-gray-800 mb-1"><strong>นามสกุล:</strong> <?= htmlspecialchars($row->last_name) ?></p>
                             <p class="text-gray-600 mb-1"><strong>เบอร์โทร:</strong> <?= htmlspecialchars($row->phone_number) ?></p>
